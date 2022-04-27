@@ -19,7 +19,9 @@ import com.example.notetaker.model.Note
 import com.example.notetaker.screen.NoteScreen
 import com.example.notetaker.screen.NoteViewModel
 import com.example.notetaker.ui.theme.NoteTakerTheme
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
