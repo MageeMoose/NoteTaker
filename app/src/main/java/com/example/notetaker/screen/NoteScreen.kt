@@ -27,6 +27,7 @@ import com.example.notetaker.components.NoteButton
 import com.example.notetaker.components.NoteInputText
 import com.example.notetaker.data.NoteDataSource
 import com.example.notetaker.model.Note
+import com.example.notetaker.util.formatDate
 import java.time.format.DateTimeFormatter
 
 @Composable
@@ -103,7 +104,7 @@ fun NoteRow(modifier: Modifier = Modifier,
                 horizontalAlignment = Alignment.Start) {
             Text(text = note.title, style = MaterialTheme.typography.subtitle2)
             Text(text = note.description, style = MaterialTheme.typography.subtitle1)
-            Text(text = note.entryDate.format(DateTimeFormatter.ofPattern("EEE,d MMMM")),
+            Text(text = formatDate(note.entryDate.time),
                 style = MaterialTheme.typography.caption)
 
 
