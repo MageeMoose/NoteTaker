@@ -25,7 +25,7 @@ object AppModule {
         = Room.databaseBuilder(
             context,
             NoteDatabase::class.java,
-            "notes_db"
-
-        ).fallbackToDestructiveMigration().build()
+            "notes_db")
+            .fallbackToDestructiveMigration()
+            .build()
 }

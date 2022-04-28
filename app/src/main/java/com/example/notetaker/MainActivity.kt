@@ -12,6 +12,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.remember
+import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.lifecycle.viewmodel.compose.viewModel
@@ -30,7 +31,7 @@ class MainActivity : ComponentActivity() {
             NoteTakerTheme {
                 // A surface container using the 'background' color from the theme
                 Surface(color = MaterialTheme.colors.background){
-                    val noteViewModel: NoteViewModel by viewModels()
+                    val noteViewModel = viewModel<NoteViewModel>()
                     NotesApp(noteViewModel = noteViewModel)
                 }
             }
@@ -38,6 +39,7 @@ class MainActivity : ComponentActivity() {
     }
 }
 
+@OptIn(ExperimentalComposeUiApi::class)
 @Composable
 fun NotesApp(noteViewModel: NoteViewModel){
     val notesList = noteViewModel.noteList.collectAsState().value

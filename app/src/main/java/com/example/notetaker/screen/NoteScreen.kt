@@ -14,6 +14,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.Notifications
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
+import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.focus.focusModifier
@@ -30,6 +31,7 @@ import com.example.notetaker.model.Note
 import com.example.notetaker.util.formatDate
 import java.time.format.DateTimeFormatter
 
+@ExperimentalComposeUiApi
 @Composable
 fun NoteScreen(
     notes: List<Note>,
@@ -39,9 +41,9 @@ fun NoteScreen(
 
    var title by remember { mutableStateOf("")}
    var description by remember{mutableStateOf( "")}
-    val context = LocalContext.current
+   val context = LocalContext.current
 
-    Column(modifier = Modifier.padding(16.dp)) {
+    Column(modifier = Modifier.padding(6.dp)) {
         TopAppBar(
             title = {
                 Text(text = stringResource(id = R.string.app_name))
@@ -84,7 +86,7 @@ fun NoteScreen(
         LazyColumn{
             items(notes){ note ->
                 NoteRow(note = note,
-                    onNoteClicked = {onRemoveNote(note)} )}
+                    onNoteClicked = {onRemoveNote(it)} )}
         }
     }
 }
@@ -114,8 +116,4 @@ fun NoteRow(modifier: Modifier = Modifier,
     }
 }
 
-@Preview(showBackground = true)
-@Composable
-fun NoteScreenPreview(){
-    NoteScreen(notes = NoteDataSource().loadNotes(), onAddNote = {}, onRemoveNote = {})
-}
+

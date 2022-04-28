@@ -9,7 +9,7 @@ android {
     compileSdk 32
 
     defaultConfig {
-        applicationId "com.example.notetaker"
+        applicationId "com.example.notetaker2"
         minSdk 30
         targetSdk 32
         versionCode 1
@@ -33,12 +33,14 @@ android {
     }
     kotlinOptions {
         jvmTarget = '1.8'
+        useIR = true
     }
     buildFeatures {
         compose true
     }
     composeOptions {
         kotlinCompilerExtensionVersion compose_version
+        kotlinCompilerVersion '1.6.10'
     }
     packagingOptions {
         resources {
